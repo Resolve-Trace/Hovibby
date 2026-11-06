@@ -1,0 +1,24 @@
+{
+  "name": "@resolvetrace/verifier-cli",
+  "version": "0.1.0",
+  "description": "ResolveTrace independent verification command-line tool",
+  "type": "module",
+  "bin": {
+    "resolvetrace-verify": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "scripts": {
+    "build": "node ../../node_modules/typescript/bin/tsc",
+    "start": "node dist/cli.js",
+    "lint": "node ../../node_modules/typescript/bin/tsc --noEmit",
+    "typecheck": "node ../../node_modules/typescript/bin/tsc --noEmit"
+  },
+  "dependencies": {
+    "@resolvetrace/protocol": "*",
+    "@resolvetrace/sdk": "*"
+  },
+  "devDependencies": {
+    "@types/node": "22.0.0",
+    "typescript": "5.5.4"
+  }
+}

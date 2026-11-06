@@ -1,0 +1,34 @@
+{
+  "name": "resolvetrace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source accountability infrastructure built on Stellar and Soroban",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build:packages": "node node_modules/typescript/bin/tsc -p packages/protocol/tsconfig.json && node node_modules/typescript/bin/tsc -p packages/storage/tsconfig.json && node node_modules/typescript/bin/tsc -p packages/sdk/tsconfig.json",
+    "build:cli": "node node_modules/typescript/bin/tsc -p apps/verifier-cli/tsconfig.json",
+    "build:web": "npm run build --workspace=apps/web",
+    "build": "npm run build:packages && npm run build:cli && npm run build:web",
+    "dev": "npm run build:packages && npm run dev --workspace=apps/web",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --passWithNoTests",
+    "test:protocol": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --testPathPattern=packages/protocol",
+    "test:sdk": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --testPathPattern=packages/sdk",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "jest": {
+    "projects": [
+      "packages/protocol",
+      "packages/sdk"
+    ]
+  },
+  "devDependencies": {
+    "typescript": "5.5.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

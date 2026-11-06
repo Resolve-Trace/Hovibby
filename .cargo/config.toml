@@ -1,0 +1,24 @@
+# Cargo workspace configuration for ResolveTrace
+#
+# ─── Target Directory ────────────────────────────────────────────────────────
+# Redirects build artifacts to a local path outside any cloud-synced folder
+# (e.g. OneDrive, Dropbox) to prevent file-locking issues during compilation.
+#
+# IMPORTANT: This path is machine-specific. If you are on a different machine,
+# change this to any local SSD path, e.g.:
+#   target-dir = "/home/you/resolvetrace-target"     (Linux/macOS)
+#   target-dir = "C:\\Users\\you\\resolvetrace-target"  (Windows)
+#
+# Alternatively, remove this section entirely to use the default
+# ./target directory inside the repo.
+[build]
+target-dir = "C:\\Users\\Hovibby\\resolvetrace-target"
+
+# ─── Windows GNULLVM Linker ──────────────────────────────────────────────────
+# The standalone "Rust stable LLVM" installer for Windows ships a linker
+# (rust-lld.exe) that the gnullvm target requires. If you installed Rust via
+# rustup, this section is unnecessary and can be removed.
+#
+# Adjust the path if your Rust installation is in a different location.
+[target.x86_64-pc-windows-gnullvm]
+linker = "C:\\Program Files\\Rust stable LLVM 1.99\\lib\\rustlib\\x86_64-pc-windows-gnullvm\\bin\\rust-lld.exe"

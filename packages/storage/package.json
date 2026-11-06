@@ -1,0 +1,30 @@
+{
+  "name": "@resolvetrace/storage",
+  "version": "0.1.0",
+  "description": "ResolveTrace storage abstractions — filesystem and S3-compatible adapters",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --runInBand",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@resolvetrace/protocol": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.13",
+    "@types/node": "22.0.0",
+    "jest": "29.7.0",
+    "ts-jest": "29.2.5",
+    "typescript": "5.5.4"
+  }
+}
